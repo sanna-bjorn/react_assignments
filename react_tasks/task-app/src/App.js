@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import uniqid from 'uniqid';
 import Overview from './components/Overview';
 
-/*initialaise constructor*/
+/*initialise constructor*/
 class App extends Component {
   constructor() {
     super();
-    /*define state: assign task to an object, and define task.text to be empty string. define tasks to be empty array to start with */
+    /*define state: create a task object, and define task.text to be empty string. define tasks to be empty array to start with */
     this.state = {
       task: { text: '', id: uniqid() },
       tasks: [],
