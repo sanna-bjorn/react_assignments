@@ -15,7 +15,7 @@ class App extends Component {
     const { task, tasks } = this.state;
 
     return (
-      <div>
+      <div className='container'>
         {/* adding onSubmitTask funtion to the form */}
         <form onSubmit={this.onSubmitTask}>
           <label htmlFor='generalInput'>General info</label>
