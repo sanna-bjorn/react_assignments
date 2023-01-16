@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { NoPrint, Print } from 'react-easy-print';
+import TextSection from './TextSection';
 
-/*take info from props and map over them, display in list element */
 const Education = () => {
   const [educationInfo, setEducationInfo] = useState({
     schoolName: '',
@@ -25,17 +25,17 @@ const Education = () => {
 
   const { schoolName, degree, graduated } = educationInfo;
 
-  //   if (!editMode) {
-  //     return (
-  //       <TextSection
-  //         firstName={firstName}
-  //         lastName={lastName}
-  //         email={email}
-  //         phone={phone}
-  //         handleEdit={handleSubmit}
-  //       />
-  //     );
-  //   }
+  if (!editMode) {
+    return (
+      <TextSection
+        firstName={firstName}
+        lastName={lastName}
+        email={email}
+        phone={phone}
+        handleEdit={handleSubmit}
+      />
+    );
+  }
 
   return (
     // <NoPrint>
