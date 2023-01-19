@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
-import styles from './Styles/styles.css';
+import './Styles/styles.css';
+import './Styles/forms.css';
 import General from './Components/General';
 import Education from './Components/Education';
 import Experience from './Components/Experience';
 
-class App extends Component {
-  constructor() {
-    super();
+class App extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      educationIDs: [],
-      experienceIDs: [],
+      educationIds: [],
+      experienceIds: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -31,15 +32,14 @@ class App extends Component {
     });
   }
   render() {
-    const educationComponent = this.state.educationIDs.map((id) => (
+    const eduComponents = this.state.educationIds.map((id) => (
       <Education key={id} id={id} handleDelete={this.handleDelete} />
     ));
-    const experienceComponent = this.state.experienceIDs.map((id) => (
+    const expComponents = this.state.experienceIds.map((id) => (
       <Experience key={id} id={id} handleDelete={this.handleDelete} />
     ));
-
     return (
-      <div className='container'>
+      <div>
         <header>
           <h1 className='title'>CV-App with React</h1>
         </header>
@@ -48,7 +48,7 @@ class App extends Component {
           <General />
           <div>
             <h2 className='subTitle'>Educational Experience</h2>
-            {educationComponent}
+            {eduComponents}
             <button
               className='addBtn'
               onClick={() => this.handleClick('educationIds')}
@@ -58,7 +58,7 @@ class App extends Component {
           </div>
           <div>
             <h2 className='subTitle'>Experience Section</h2>
-            {experienceComponent}
+            {expComponents}
             <button
               className='addBtn'
               onClick={() => this.handleClick('experienceIds')}
@@ -71,5 +71,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
