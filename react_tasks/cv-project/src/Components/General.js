@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 // import { NoPrint, Print } from 'react-easy-print';
-import TextSection from './TextSection';
 
 function SavedText(props) {
   const { firstName, lastName, email, phone, handleClick } = props;

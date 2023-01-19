@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 // import { NoPrint, Print } from 'react-easy-print';
-import TextSection from './TextSection';
 
 function SavedText(props) {
   const { schoolName, study, from, to, handleEdit } = props;
   return (
     <div className='section'>
       <p>School Name: {schoolName}</p>
-      <p>Study: {study}</p>
+      <p>Degree: {study}</p>
       <p>From: {from}</p>
       <p>To: {to}</p>
 
@@ -58,7 +57,7 @@ class Education extends React.Component {
       <section>
         <form className='section' action='' onSubmit={this.handleSubmit}>
           <label htmlFor='schoolName'>
-            <p>School Name:</p>
+            <p>School:</p>
             <input
               type='text'
               placeholder='School Name'
@@ -70,10 +69,10 @@ class Education extends React.Component {
             />
           </label>
           <label>
-            <p>Title of Study:</p>
+            <p>Degree:</p>
             <input
               type='text'
-              placeholder='Title of study'
+              placeholder='Degree'
               name='study'
               onChange={this.handleChange}
               value={study}
