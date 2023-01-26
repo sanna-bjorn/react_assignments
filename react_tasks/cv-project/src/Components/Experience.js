@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { NoPrint, Print } from 'react-easy-print';
 
 function SavedText(props) {
   const { companyName, position, from, to, tasks, handleEdit } = props;

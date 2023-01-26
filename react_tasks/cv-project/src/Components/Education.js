@@ -1,118 +1,103 @@
 import React, { useState } from 'react';
-// import { NoPrint, Print } from 'react-easy-print';
+import TextSection from './TextSection';
 
-function SavedText(props) {
-  const { schoolName, study, from, to, handleEdit } = props;
-  return (
-    <div className='section'>
-      <p>School Name: {schoolName}</p>
-      <p>Degree: {study}</p>
-      <p>From: {from}</p>
-      <p>To: {to}</p>
+const Education = (props) => {
+  const [educationInfo, setEducationInfo] = useState({
+    schoolName: '',
+    study: '',
+    from: '',
+    to: '',
+  });
 
-      <button className='formBtn generalBtn' onClick={handleEdit}>
-        Edit
-      </button>
-    </div>
-  );
-}
-class Education extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editMode: true,
-      schoolName: '',
-      study: '',
-      from: '',
-      to: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleChange(e) {
+  const [editMode, setEditMode] = useState(true);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState((prevState) => {
-      return { editMode: !prevState.editMode };
+    setEducationInfo((prevInfo) => {
+      return { ...prevInfo, [name]: value };
     });
-  }
-  render() {
-    const { editMode, schoolName, study, from, to } = this.state;
-    const { id, handleDelete } = this.props;
-    if (!editMode) {
-      return (
-        <SavedText
-          schoolName={schoolName}
-          study={study}
-          from={from}
-          to={to}
-          handleEdit={this.handleSubmit}
-        />
-      );
-    }
-    return (
-      <section>
-        <form className='section' action='' onSubmit={this.handleSubmit}>
-          <label htmlFor='schoolName'>
-            <p>School:</p>
-            <input
-              type='text'
-              placeholder='School Name'
-              name='schoolName'
-              id='schoolName'
-              onChange={this.handleChange}
-              value={schoolName}
-              required
-            />
-          </label>
-          <label>
-            <p>Degree:</p>
-            <input
-              type='text'
-              placeholder='Degree'
-              name='study'
-              onChange={this.handleChange}
-              value={study}
-              required
-            />
-          </label>
-          <label>
-            <p>From:</p>
-            <input
-              type='date'
-              name='from'
-              placeholder='From'
-              onChange={this.handleChange}
-              value={from}
-              required
-            />
-          </label>
+  };
 
-          <label>
-            <p>To:</p>
-            <input
-              type='date'
-              name='to'
-              placeholder='To'
-              onChange={this.handleChange}
-              value={to}
-              required
-            />
-          </label>
-          <button className='formBtn'>Save</button>
-          <button
-            className='formBtn'
-            type='button'
-            onClick={() => handleDelete('educationIds', id)}
-          >
-            Delete
-          </button>
-        </form>
-      </section>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEditMode((prevMode) => !prevMode);
+  };
+
+  const { schoolName, study, from, to } = educationInfo;
+
+  const { id, handleDelete } = props;
+  if (!editMode) {
+    return (
+      <TextSection
+        schoolName={schoolName}
+        study={study}
+        from={from}
+        to={to}
+        handleEdit={handleSubmit}
+      />
     );
   }
-}
+
+  return (
+    <section>
+      <form className='section' action='' onSubmit={handleSubmit}>
+        <label htmlFor='schoolName'>
+          <p>School:</p>
+          <input
+            type='text'
+            placeholder='School Name'
+            name='schoolName'
+            id='schoolName'
+            onChange={handleChange}
+            value={schoolName}
+            required
+          />
+        </label>
+        <label>
+          <p>Degree:</p>
+          <input
+            type='text'
+            placeholder='Degree'
+            name='study'
+            onChange={handleChange}
+            value={study}
+            required
+          />
+        </label>
+        <label>
+          <p>From:</p>
+          <input
+            type='date'
+            name='from'
+            placeholder='From'
+            onChange={handleChange}
+            value={from}
+            required
+          />
+        </label>
+
+        <label>
+          <p>To:</p>
+          <input
+            type='date'
+            name='to'
+            placeholder='To'
+            onChange={handleChange}
+            value={to}
+            required
+          />
+        </label>
+        <button className='formBtn'>Save</button>
+        <button
+          className='formBtn'
+          type='button'
+          onClick={() => handleDelete('educationIds', id)}
+        >
+          Delete
+        </button>
+      </form>
+    </section>
+  );
+};
+
 export default Education;

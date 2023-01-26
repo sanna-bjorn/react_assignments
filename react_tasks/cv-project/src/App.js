@@ -7,27 +7,35 @@ import Education from './Components/Education';
 import Experience from './Components/Experience';
 
 const App = (props) => {
-  const [state, setState] = useState({ educationIds: [], experienceIds: [] });
+  const [educationIds, setEducationIds] = useState([]);
+  const [experienceIds, setExperienceIds] = useState([]);
 
   const handleClick = (type) => {
-    setState((prevState) => {
-      return {
-        [type]: [...prevState[type], uniqid()],
-      };
-    });
+    if (type === 'experienceIds') {
+      setExperienceIds((prevExpIds) => [...prevExpIds, uniqid()]);
+    } else {
+      setEducationIds((prevEduIds) => [...prevEduIds, uniqid()]);
+    }
   };
+
   const handleDelete = (type, id) => {
-    setState((prevState) => {
-      let newList = prevState[type].filter((key) => key !== id);
-      return {
-        [type]: newList,
-      };
-    });
+    if (type === 'experienceIds') {
+      setExperienceIds((prevExpIds) => {
+        let NewList = prevExpIds.filter((key) => key != id);
+        return NewList;
+      });
+    } else {
+      setEducationIds((prevEduIds) => {
+        let NewList = prevEduIds.filter((key) => key != id);
+        return NewList;
+      });
+    }
   };
-  const eduComponents = state.educationIds.map((id) => (
+
+  const eduComponents = educationIds.map((id) => (
     <Education key={id} id={id} handleDelete={handleDelete} />
   ));
-  const expComponents = this.state.experienceIds.map((id) => (
+  const expComponents = experienceIds.map((id) => (
     <Experience key={id} id={id} handleDelete={handleDelete} />
   ));
 
