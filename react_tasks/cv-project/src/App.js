@@ -21,12 +21,12 @@ const App = (props) => {
   const handleDelete = (type, id) => {
     if (type === 'experienceIds') {
       setExperienceIds((prevExpIds) => {
-        let NewList = prevExpIds.filter((key) => key != id);
+        let NewList = prevExpIds.filter((key) => key !== id);
         return NewList;
       });
     } else {
       setEducationIds((prevEduIds) => {
-        let NewList = prevEduIds.filter((key) => key != id);
+        let NewList = prevEduIds.filter((key) => key !== id);
         return NewList;
       });
     }

@@ -2,9 +2,10 @@ function TextSection(props) {
   if (props.firstName) {
     return (
       <div className='textSection'>
-        <span className='material-icons editIcon' onClick={props.handleEdit}>
-          create
-        </span>
+        <span
+          className='material-icons editIcon'
+          onClick={props.handleEdit}
+        ></span>
         <p>
           <span className='categoryText'>First Name:</span> {props.firstName}
         </p>
@@ -22,9 +23,10 @@ function TextSection(props) {
   } else if (props.companyName) {
     return (
       <div className='textSection'>
-        <span className='material-icons editIcon' onClick={props.handleEdit}>
-          create
-        </span>
+        <span
+          className='material-icons editIcon'
+          onClick={props.handleEdit}
+        ></span>
         <p>
           <span className='categoryText'>Company Name:</span>{' '}
           {props.companyName}
@@ -47,9 +49,10 @@ function TextSection(props) {
   } else {
     return (
       <div className='textSection'>
-        <span className='material-icons editIcon' onClick={props.handleEdit}>
-          create
-        </span>
+        <span
+          className='material-icons editIcon'
+          onClick={props.handleEdit}
+        ></span>
         <p>
           <span className='categoryText'>School Name:</span> {props.schoolName}
         </p>
