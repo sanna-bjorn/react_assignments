@@ -12,7 +12,7 @@ function CardContainer(props) {
   let images = [
     {
       src: cloud,
-      title: 'Cloud',
+      title: 'Thought',
       backGroundColor: 'rgb(255,255,150)',
       borderStyle: '1px solid rgb(255 223 137)',
     },
