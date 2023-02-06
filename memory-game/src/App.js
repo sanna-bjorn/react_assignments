@@ -8,7 +8,4 @@ function App() {
     </div>
   );
 }
-
-console.log('Hello world!');
-
 export default App;
