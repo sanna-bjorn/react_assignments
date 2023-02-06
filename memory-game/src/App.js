@@ -1,20 +1,14 @@
 import './App.css';
-import Card from './components/Card';
-import Score from './components/Score';
+import Game from './components/Game';
 
 function App() {
   return (
-    <div>
-      <header>
-        <h1 className='title'>Memory Game</h1>
-      </header>
-      {/* <main>
-        <Card />
-        <Score />
-      </main> */}
+    <div className='App'>
+      <Game />
     </div>
   );
 }
+
 console.log('Hello world!');
 
 export default App;
