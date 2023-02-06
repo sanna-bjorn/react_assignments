@@ -6,6 +6,7 @@ import headphones from '../assets/headphones.jpg';
 import neko from '../assets/neko.jpg';
 import torigate from '../assets/torigate.jpg';
 
+//Card container renders Card.sj and holds info of the game characters.
 function CardContainer(props) {
   const { handleGameLogic, score, highScore } = props;
 
@@ -42,8 +43,10 @@ function CardContainer(props) {
     },
   ];
 
+  //Shuffle function to show random order of cards. useState hook defined with initial state of images.
   const [cards, setNewCards] = useState(images);
 
+  //loop through cards while i is smaller than array lenght, larger than 0, subtract 1 from i on each loop. Create randomID's with Math.random().
   const shuffleCards = (newCards) => {
     for (let i = newCards.length - 1; i > 0; i--) {
       let randomIDs = Math.floor(Math.random() * i);
@@ -51,12 +54,16 @@ function CardContainer(props) {
     }
   };
 
+  //Update NewCards with shuffle function and set a new array of cards.
+
   useEffect(() => {
     const newCards = [...cards];
     shuffleCards(newCards);
     setNewCards(newCards);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [score, highScore]);
+
+  //map through Cards with card information
 
   return (
     <>
