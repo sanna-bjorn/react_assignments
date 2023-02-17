@@ -7,7 +7,6 @@ const NavBar = () => {
       <Nav>
         <NavLogo to='/'>Logo</NavLogo>
         <Bars />
-
         <NavMenu>
           <NavLink to='/' activeStyle={{ color: 'black' }}>
             Home
@@ -15,7 +14,9 @@ const NavBar = () => {
           <NavLink to='/about' activeStyle={{ color: 'black' }}>
             About
           </NavLink>
-          <NavLink to='/contact' activeStyle={{ color: 'black' }}></NavLink>
+          <NavLink to='/contact' activeStyle={{ color: 'black' }}>
+            Contact
+          </NavLink>
         </NavMenu>
       </Nav>
     </>
